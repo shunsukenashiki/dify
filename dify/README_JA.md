@@ -49,3 +49,62 @@ Dify Cloudサービスを利用し、セットアップ不要での使用が可�
 
 ## ライセンス
 このプロジェクトは[Dify Open Source License](LICENSE)の下で提供。
+
+
+
+### バックエンド
+Dify のバックエンドは[Flask](https://flask.palletsprojects.com/en/3.0.x/)を使って書かれています。ORM には[SQLAlchemy](https://www.sqlalchemy.org/)を、タスクキューには[Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)を使っています。認証ロジックは Flask-login 経由で行われます。
+
+```
+[api/]
+├── constants             // コードベース全体で使用される定数設定
+├── controllers           // APIルート定義とリクエスト処理ロジック
+├── core                  // アプリケーションの中核的な管理、モデル統合、およびツール
+├── docker                // Dockerおよびコンテナ関連の設定
+├── events                // イベントのハンドリングと処理
+├── extensions            // 第三者のフレームワーク/プラットフォームとの拡張
+├── fields                // シリアライゼーション/マーシャリング用のフィールド定義
+├── libs                  // 再利用可能なライブラリとヘルパー
+├── migrations            // データベースマイグレーションスクリプト
+├── models                // データベースモデルとスキーマ定義
+├── services              // ビジネスロジックの定義
+├── storage               // 秘密鍵の保存
+├── tasks                 // 非同期タスクとバックグラウンドジョブの処理
+└── tests                 // テスト関連のファイル
+```
+
+### フロントエンド
+
+Typescriptベースの[Next.js](https://nextjs.org/)テンプレートを使ってブートストラップされ、[Tailwind CSS](https://tailwindcss.com/)を使ってスタイリングされています。
+
+[web/]
+├── app                   // レイアウト、ページ、コンポーネント
+│   ├── (commonLayout)    // アプリ全体で共通のレイアウト
+│   ├── (shareLayout)     // トークン特有のセッションで共有されるレイアウト
+│   ├── activate          // アクティベートページ
+│   ├── components        // ページやレイアウトで共有されるコンポーネント
+│   ├── install           // インストールページ
+│   ├── signin            // サインインページ
+│   └── styles            // グローバルに共有されるスタイル
+├── assets                // 静的アセット
+├── bin                   // ビルドステップで実行されるスクリプト
+├── config                // 調整可能な設定とオプション
+├── context               // アプリの異なる部分で使用される共有コンテキスト
+├── dictionaries          // 言語別の翻訳ファイル
+├── docker                // コンテナ設定
+├── hooks                 // 再利用可能なフック
+├── i18n                  // 国際化設定
+├── models                // データモデルとAPIレスポンスの形状を記述
+├── public                // ファビコンなどのメタアセット
+├── service               // APIアクションの形状を指定
+├── test
+├── types                 // 関数のパラメータと戻り値の記述
+└── utils                 // 共有ユーティリティ関数
+```
+
+### インフラ
+Dockerでコンテナ化して動かしてます。
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Node.js v18.x (LTS)](http://nodejs.org)
+- [npm](https://www.npmjs.com/) version 8.x.x or [Yarn](https://yarnpkg.com/)
