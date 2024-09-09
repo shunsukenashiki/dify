@@ -1,11 +1,9 @@
 
 # DifyをAWS上にCDKでデプロイ
 
-[![Build](https://github.com/tmokmss/dify-on-aws-cdk/actions/workflows/build.yml/badge.svg)](https://github.com/tmokmss/dify-on-aws-cdk/actions/workflows/build.yml)
+[Build](https://github.com/tmokmss/dify-on-aws-cdk/actions/workflows/build.yml/badge.svg)
 
 AWSのマネージドサービスを使って、LLMアプリ開発プラットフォームである[Dify](https://dify.ai/)をAWS CDKでデプロイ
-
-![architecture](./imgs/architecture.png)
 
 ## 主な特徴
 
